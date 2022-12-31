@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="ProductSet" EntityType="Model1.Store.ProductSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandSet" EntityType="Model1.Store.BrandSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanySet" EntityType="Model1.Store.CompanySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ManagerSet" EntityType="Model1.Store.ManagerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberSet" EntityType="Model1.Store.MemberSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BankSet" EntityType="Model1.Store.BankSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AdminSet" EntityType="Model1.Store.AdminSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderSet" EntityType="Model1.Store.OrderSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ManagerCompany" Association="Model1.Store.ManagerCompany">
+      <End Role="Manager" EntitySet="ManagerSet" />
+      <End Role="Company" EntitySet="CompanySet" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyBrand" Association="Model1.Store.CompanyBrand">
+      <End Role="Company" EntitySet="CompanySet" />
+      <End Role="Brand" EntitySet="BrandSet" />
+    </AssociationSet>
+    <AssociationSet Name="BrandProduct" Association="Model1.Store.BrandProduct">
+      <End Role="Brand" EntitySet="BrandSet" />
+      <End Role="Product" EntitySet="ProductSet" />
+    </AssociationSet>
+    <AssociationSet Name="BankMember" Association="Model1.Store.BankMember">
+      <End Role="Bank" EntitySet="BankSet" />
+      <End Role="Member" EntitySet="MemberSet" />
+    </AssociationSet>
+    <AssociationSet Name="MemberOrder" Association="Model1.Store.MemberOrder">
+      <End Role="Member" EntitySet="MemberSet" />
+      <End Role="Order" EntitySet="OrderSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ProductSet">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="BrandBrandId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandSet">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BrandOrigin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="CompanyCompanyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanySet">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompanyPhone" Type="int" Nullable="false" />
+    <Property Name="CompanyAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ManagerId" Type="int" Nullable="false" />
+    <Property Name="ManagerManagerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ManagerSet">
+    <Key>
+      <PropertyRef Name="ManagerId" />
+    </Key>
+    <Property Name="ManagerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManagerName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ManagerPhone" Type="int" Nullable="false" />
+    <Property Name="ManagerMail" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberSet">
+    <Key>
+      <PropertyRef Name="MemberId" />
+    </Key>
+    <Property Name="MemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MemberPassword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BankId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BankBankId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BankSet">
+    <Key>
+      <PropertyRef Name="BankId" />
+    </Key>
+    <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IBAN" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdminSet">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderSet">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MemberId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MemberMemberId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ManagerCompany">
+    <End Role="Manager" Type="Model1.Store.ManagerSet" Multiplicity="1" />
+    <End Role="Company" Type="Model1.Store.CompanySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ManagerId" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="ManagerManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyBrand">
+    <End Role="Company" Type="Model1.Store.CompanySet" Multiplicity="1" />
+    <End Role="Brand" Type="Model1.Store.BrandSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="CompanyCompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandProduct">
+    <End Role="Brand" Type="Model1.Store.BrandSet" Multiplicity="1" />
+    <End Role="Product" Type="Model1.Store.ProductSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandBrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BankMember">
+    <End Role="Bank" Type="Model1.Store.BankSet" Multiplicity="1" />
+    <End Role="Member" Type="Model1.Store.MemberSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="BankId" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="BankBankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberOrder">
+    <End Role="Member" Type="Model1.Store.MemberSet" Multiplicity="1" />
+    <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="MemberMemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProductSet" EntityType="Model1.Product" />
+          <EntitySet Name="BrandSet" EntityType="Model1.Brand" />
+          <EntitySet Name="CompanySet" EntityType="Model1.Company" />
+          <EntitySet Name="ManagerSet" EntityType="Model1.Manager" />
+          <AssociationSet Name="ManagerCompany" Association="Model1.ManagerCompany">
+            <End Role="Manager" EntitySet="ManagerSet" />
+            <End Role="Company" EntitySet="CompanySet" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyBrand" Association="Model1.CompanyBrand">
+            <End Role="Company" EntitySet="CompanySet" />
+            <End Role="Brand" EntitySet="BrandSet" />
+          </AssociationSet>
+          <AssociationSet Name="BrandProduct" Association="Model1.BrandProduct">
+            <End Role="Brand" EntitySet="BrandSet" />
+            <End Role="Product" EntitySet="ProductSet" />
+          </AssociationSet>
+          <EntitySet Name="MemberSet" EntityType="Model1.Member" />
+          <EntitySet Name="BankSet" EntityType="Model1.Bank" />
+          <AssociationSet Name="BankMember" Association="Model1.BankMember">
+            <End Role="Bank" EntitySet="BankSet" />
+            <End Role="Member" EntitySet="MemberSet" />
+          </AssociationSet>
+          <EntitySet Name="AdminSet" EntityType="Model1.Admin" />
+          <EntitySet Name="OrderSet" EntityType="Model1.Order" />
+          <AssociationSet Name="MemberOrder" Association="Model1.MemberOrder">
+            <End Role="Member" EntitySet="MemberSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductType" Type="String" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Model1.BrandProduct" FromRole="Product" ToRole="Brand" />
+          <Property Name="BrandBrandId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" Nullable="false" />
+          <Property Name="BrandOrigin" Type="String" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Model1.CompanyBrand" FromRole="Brand" ToRole="Company" />
+          <Property Name="CompanyCompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Model1.BrandProduct" FromRole="Brand" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" />
+          <Property Name="CompanyPhone" Type="Int32" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" Nullable="false" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Manager" Relationship="Model1.ManagerCompany" FromRole="Company" ToRole="Manager" />
+          <Property Name="ManagerManagerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Model1.CompanyBrand" FromRole="Company" ToRole="Brand" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="ManagerId" />
+          </Key>
+          <Property Name="ManagerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerName" Type="String" Nullable="false" />
+          <Property Name="ManagerPhone" Type="Int32" Nullable="false" />
+          <Property Name="ManagerMail" Type="String" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Model1.ManagerCompany" FromRole="Manager" ToRole="Company" />
+        </EntityType>
+        <Association Name="ManagerCompany">
+          <End Type="Model1.Manager" Role="Manager" Multiplicity="1" />
+          <End Type="Model1.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="ManagerId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="ManagerManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyBrand">
+          <End Type="Model1.Company" Role="Company" Multiplicity="1" />
+          <End Type="Model1.Brand" Role="Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="CompanyCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandProduct">
+          <End Type="Model1.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="Model1.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandBrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberName" Type="String" Nullable="false" />
+          <Property Name="MemberPassword" Type="String" Nullable="false" />
+          <Property Name="BankId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="Model1.BankMember" FromRole="Member" ToRole="Bank" />
+          <Property Name="BankBankId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Model1.MemberOrder" FromRole="Member" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" Nullable="false" />
+          <Property Name="IBAN" Type="String" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Model1.BankMember" FromRole="Bank" ToRole="Member" />
+        </EntityType>
+        <Association Name="BankMember">
+          <End Type="Model1.Bank" Role="Bank" Multiplicity="1" />
+          <End Type="Model1.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="BankBankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderCode" Type="String" Nullable="false" />
+          <Property Name="MemberId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Model1.MemberOrder" FromRole="Order" ToRole="Member" />
+          <Property Name="MemberMemberId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="MemberOrder">
+          <End Type="Model1.Member" Role="Member" Multiplicity="1" />
+          <End Type="Model1.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MemberMemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container1">
+    <EntitySetMapping Name="ProductSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Product)">
+        <MappingFragment StoreEntitySet="ProductSet">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="BrandBrandId" ColumnName="BrandBrandId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Brand)">
+        <MappingFragment StoreEntitySet="BrandSet">
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="BrandOrigin" ColumnName="BrandOrigin" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyCompanyId" ColumnName="CompanyCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Company)">
+        <MappingFragment StoreEntitySet="CompanySet">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyPhone" ColumnName="CompanyPhone" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="ManagerManagerId" ColumnName="ManagerManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManagerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Manager)">
+        <MappingFragment StoreEntitySet="ManagerSet">
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+          <ScalarProperty Name="ManagerPhone" ColumnName="ManagerPhone" />
+          <ScalarProperty Name="ManagerMail" ColumnName="ManagerMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Member)">
+        <MappingFragment StoreEntitySet="MemberSet">
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+          <ScalarProperty Name="MemberPassword" ColumnName="MemberPassword" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="BankBankId" ColumnName="BankBankId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Bank)">
+        <MappingFragment StoreEntitySet="BankSet">
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Admin)">
+        <MappingFragment StoreEntitySet="AdminSet">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Order)">
+        <MappingFragment StoreEntitySet="OrderSet">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="MemberMemberId" ColumnName="MemberMemberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

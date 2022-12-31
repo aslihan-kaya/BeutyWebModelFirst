@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="279fd23c1e32496d92f4d847938d665b" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.Product" Width="1.5" PointX="1.125" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Brand" Width="1.5" PointX="3" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Company" Width="1.5" PointX="5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Manager" Width="1.5" PointX="7" PointY="0.5" />
+        <AssociationConnector Association="Model1.ManagerCompany" />
+        <AssociationConnector Association="Model1.CompanyBrand" />
+        <AssociationConnector Association="Model1.BrandProduct" />
+        <EntityTypeShape EntityType="Model1.Member" Width="1.5" PointX="2.375" PointY="3.125" />
+        <EntityTypeShape EntityType="Model1.Bank" Width="1.5" PointX="4.625" PointY="3.625" />
+        <AssociationConnector Association="Model1.BankMember" />
+        <EntityTypeShape EntityType="Model1.Admin" Width="1.5" PointX="0.5" PointY="3.375" />
+        <EntityTypeShape EntityType="Model1.Order" Width="1.5" PointX="6.875" PointY="3.25" />
+        <AssociationConnector Association="Model1.MemberOrder" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

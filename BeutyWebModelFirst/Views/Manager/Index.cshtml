@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BeutyWebModelFirst.Models.Manager>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h3>Müdür Bilgileri Tablosu</h3>
+
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerMail)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerMail)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ManagerId }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ManagerId }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+
+</table>

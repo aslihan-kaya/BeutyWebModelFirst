@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BeutyWebModelFirst.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+    <h3>Siparişler Tablosu</h3>
+
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.MemberName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member.MemberName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.OrderId }, new { @class = "btn btn-success" })
+        </td>
+    </tr>
+}
+
+</table>
